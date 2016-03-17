@@ -14,7 +14,7 @@ rgmii_ports_t rgmii_ports = on tile[1]: RGMII_PORTS_INITIALIZER;
 
 port p_smi_mdio   = on tile[1]: XS1_PORT_1C;
 port p_smi_mdc    = on tile[1]: XS1_PORT_1D;
-port p_eth_reset  = on tile[1]: XS1_PORT_1N;
+port p_eth_reset  = on tile[1]: XS1_PORT_4A;
 
 static unsigned char ip_address[4] = {192, 168, 1, 178};
 
