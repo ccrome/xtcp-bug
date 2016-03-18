@@ -6,6 +6,15 @@
 #include "icmp.h"
 #include "smi.h"
 #include "debug_print.h"
+#include "xtcp.h"
+#include "web_server.h"
+
+xtcp_ipconfig_t ipconfig = {
+        { 192, 168,   1, 178 },
+        { 255, 255,   0,   0 },
+        { 192, 168,   0,   1 }
+};
+
 
 // These ports are for accessing the OTP memory
 otp_ports_t otp_ports = on tile[0]: OTP_PORTS_INITIALIZER;
@@ -16,22 +25,23 @@ port p_smi_mdio   = on tile[1]: XS1_PORT_1C;
 port p_smi_mdc    = on tile[1]: XS1_PORT_1D;
 port p_eth_reset  = on tile[1]: XS1_PORT_4A;
 
-static unsigned char ip_address[4] = {192, 168, 1, 178};
-
-
 // An enum to manage the array of connections from the ethernet component
 // to its clients.
 enum eth_clients {
-  ETH_TO_ICMP,
+  ETH_TO_XTCP,
   NUM_ETH_CLIENTS
 };
 
 enum cfg_clients {
-  CFG_TO_ICMP,
+  CFG_TO_XTCP,
   CFG_TO_PHY_DRIVER,
   NUM_CFG_CLIENTS
 };
 
+enum xtcp_clients {
+    XTCP_TO_APP,
+        NUM_XTCP_CLIENTS
+};
 [[combinable]]
 void ar8035_phy_driver(client interface smi_if smi,
                 client interface ethernet_cfg_if eth) {
@@ -68,12 +78,30 @@ void ar8035_phy_driver(client interface smi_if smi,
   }
 }
 
+void tcp_handler(chanend c_xtcp) {
+        xtcp_connection_t conn;
+        web_server_init(c_xtcp, null, null);
+        // Initialize your other code here
+        while (1) {
+                select
+                {
+                case xtcp_event(c_xtcp,conn):
+                        // handle other kinds of tcp traffic here
+                        web_server_handle_event(c_xtcp, null, null, conn);
+                        break;
+                        // handle other events in your system here
+                }
+        }
+}
+
 int main()
 {
   ethernet_cfg_if i_cfg[NUM_CFG_CLIENTS];
   ethernet_rx_if i_rx[NUM_ETH_CLIENTS];
   ethernet_tx_if i_tx[NUM_ETH_CLIENTS];
   streaming chan c_rgmii_cfg;
+  chan c_xtcp[NUM_XTCP_CLIENTS];
+  
   smi_if i_smi;
 
   par {
@@ -88,9 +116,30 @@ int main()
   
     on tile[1]: smi(i_smi, p_smi_mdio, p_smi_mdc);
 
-    on tile[0]: icmp_server(i_cfg[CFG_TO_ICMP],
-                            i_rx[ETH_TO_ICMP], i_tx[ETH_TO_ICMP],
-                            ip_address, otp_ports);
+//    on tile[0]: icmp_server(i_cfg[CFG_TO_ICMP],
+//                            i_rx[ETH_TO_ICMP], i_tx[ETH_TO_ICMP],
+//                            ip_address, otp_ports);
+
+
+//void xtcp(chanend c_xtcp[n],
+//          size_t n,
+//          client mii_if ?i_mii,
+//          client ethernet_cfg_if ?i_eth_cfg,
+//          client ethernet_rx_if ?i_eth_rx,
+//          client ethernet_tx_if ?i_eth_tx,
+//          client smi_if ?i_smi,
+//          uint8_t phy_address,
+//          const char(& ?mac_address)[6],
+//          otp_ports_t & ?otp_ports,
+//          xtcp_ipconfig_t &ipconfig)
+          on tile[0]: xtcp(c_xtcp, NUM_XTCP_CLIENTS,
+                           NULL, // mii
+                           i_cfg[CFG_TO_XTCP], i_rx[ETH_TO_XTCP], i_tx[ETH_TO_XTCP],
+                           NULL, 0, // SMI & phy addresss
+                           NULL, // mac address
+                           otp_ports, // for mac address
+                           ipconfig);
+          on tile[0]: tcp_handler(c_xtcp[XTCP_TO_APP]);
   }
   return 0;
 }

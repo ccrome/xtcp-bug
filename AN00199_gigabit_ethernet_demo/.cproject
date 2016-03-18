@@ -56,8 +56,20 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_otpinfo/doc/pdf}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_logging/doc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_ethernet/doc/pdf}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_xtcp/src/xtcp_uip}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_xtcp/src/xtcp_uip/igmp}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_xtcp/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_xtcp/src/xtcp_uip/autoip}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_xtcp/src/xtcp_uip/dhcpc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_xtcp/api}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_webserver/api}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_webserver/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_webserver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_webserver/doc/pdf}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_webserver/doc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_webserver/gen}&quot;"/>
 								</option>
-								<option id="com.xmos.xc.compiler.option.defined.symbols.1988014339" superClass="com.xmos.xc.compiler.option.defined.symbols" valueType="definedSymbols">
+								<option id="com.xmos.xc.compiler.option.defined.symbols.1988014339" name="com.xmos.xc.compiler.option.defined.symbols" superClass="com.xmos.xc.compiler.option.defined.symbols" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="__XC__=1"/>
 									<listOptionValue builtIn="false" value="__llvm__=1"/>
 									<listOptionValue builtIn="false" value="__ATOMIC_RELAXED=0"/>
@@ -242,8 +254,20 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_otpinfo/doc/pdf}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_logging/doc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_ethernet/doc/pdf}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_xtcp/src/xtcp_uip}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_xtcp/src/xtcp_uip/igmp}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_xtcp/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_xtcp/src/xtcp_uip/autoip}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_xtcp/src/xtcp_uip/dhcpc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_xtcp/api}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_webserver/api}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_webserver/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_webserver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_webserver/doc/pdf}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_webserver/doc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_webserver/gen}&quot;"/>
 								</option>
-								<option id="com.xmos.c.compiler.option.defined.symbols.1047848853" superClass="com.xmos.c.compiler.option.defined.symbols" valueType="definedSymbols">
+								<option id="com.xmos.c.compiler.option.defined.symbols.1047848853" name="com.xmos.c.compiler.option.defined.symbols" superClass="com.xmos.c.compiler.option.defined.symbols" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="__llvm__=1"/>
 									<listOptionValue builtIn="false" value="__clang__=1"/>
 									<listOptionValue builtIn="false" value="__clang_major__=3"/>
@@ -576,8 +600,20 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_otpinfo/doc/pdf}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_logging/doc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_ethernet/doc/pdf}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_xtcp/src/xtcp_uip}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_xtcp/src/xtcp_uip/igmp}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_xtcp/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_xtcp/src/xtcp_uip/autoip}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_xtcp/src/xtcp_uip/dhcpc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_xtcp/api}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_webserver/api}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_webserver/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_webserver}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_webserver/doc/pdf}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_webserver/doc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_webserver/gen}&quot;"/>
 								</option>
-								<option id="com.xmos.cxx.compiler.option.defined.symbols.638923529" superClass="com.xmos.cxx.compiler.option.defined.symbols" valueType="definedSymbols">
+								<option id="com.xmos.cxx.compiler.option.defined.symbols.638923529" name="com.xmos.cxx.compiler.option.defined.symbols" superClass="com.xmos.cxx.compiler.option.defined.symbols" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="__llvm__=1"/>
 									<listOptionValue builtIn="false" value="__clang__=1"/>
 									<listOptionValue builtIn="false" value="__clang_major__=3"/>
