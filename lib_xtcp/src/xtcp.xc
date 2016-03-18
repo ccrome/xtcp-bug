@@ -119,6 +119,10 @@ void xtcp(chanend xtcp[n], size_t n,
   timeout += 10000000;
 
   while (1) {
+      xtcpd_service_clients(xtcp, n);
+      xtcpd_check_connection_poll();
+      uip_xtcp_checkstate();
+      xtcp_process_udp_acks();
     unsafe {
     select {
     case !isnull(i_mii) => mii_incoming_packet(mii_info):
@@ -154,11 +158,6 @@ void xtcp(chanend xtcp[n], size_t n,
       break;
     case tmr when timerafter(timeout) :> timeout:
       timeout += 10000000;
-
-      xtcpd_service_clients(xtcp, n);
-      xtcpd_check_connection_poll();
-      uip_xtcp_checkstate();
-      xtcp_process_udp_acks();
 
       // Check for the link state
       if (!isnull(i_smi))
@@ -197,6 +196,8 @@ void xtcp(chanend xtcp[n], size_t n,
 
       xtcp_process_periodic_timer();
       break;
+    default:
+        break;
     }
     }
   }
