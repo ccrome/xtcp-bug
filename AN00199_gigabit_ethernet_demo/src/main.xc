@@ -115,31 +115,14 @@ int main()
     on tile[1].core[0]: ar8035_phy_driver(i_smi, i_cfg[CFG_TO_PHY_DRIVER]);
   
     on tile[1]: smi(i_smi, p_smi_mdio, p_smi_mdc);
-
-//    on tile[0]: icmp_server(i_cfg[CFG_TO_ICMP],
-//                            i_rx[ETH_TO_ICMP], i_tx[ETH_TO_ICMP],
-//                            ip_address, otp_ports);
-
-
-//void xtcp(chanend c_xtcp[n],
-//          size_t n,
-//          client mii_if ?i_mii,
-//          client ethernet_cfg_if ?i_eth_cfg,
-//          client ethernet_rx_if ?i_eth_rx,
-//          client ethernet_tx_if ?i_eth_tx,
-//          client smi_if ?i_smi,
-//          uint8_t phy_address,
-//          const char(& ?mac_address)[6],
-//          otp_ports_t & ?otp_ports,
-//          xtcp_ipconfig_t &ipconfig)
-          on tile[0]: xtcp(c_xtcp, NUM_XTCP_CLIENTS,
-                           NULL, // mii
-                           i_cfg[CFG_TO_XTCP], i_rx[ETH_TO_XTCP], i_tx[ETH_TO_XTCP],
-                           NULL, 0, // SMI & phy addresss
-                           NULL, // mac address
-                           otp_ports, // for mac address
-                           ipconfig);
-          on tile[0]: tcp_handler(c_xtcp[XTCP_TO_APP]);
+    on tile[0]: xtcp(c_xtcp, NUM_XTCP_CLIENTS,
+                     NULL, // mii
+                     i_cfg[CFG_TO_XTCP], i_rx[ETH_TO_XTCP], i_tx[ETH_TO_XTCP],
+                     NULL, 0, // SMI & phy addresss
+                     NULL, // mac address
+                     otp_ports, // for mac address
+                     ipconfig);
+    on tile[0]: tcp_handler(c_xtcp[XTCP_TO_APP]);
   }
   return 0;
 }
