@@ -1,14 +1,14 @@
-# The TARGET variable determines what target system the application is 
+# The TARGET variable determines what target system the application is
 # compiled for. It either refers to an XN file in the source directories
 # or a valid argument for the --target option when compiling.
 
-TARGET = XCORE-200-EXPLORER
+TARGET = D4U-AVB-DG
 
 # The APP_NAME variable determines the name of the final .xe file. It should
-# not include the .xe postfix. If left blank the name will default to 
+# not include the .xe postfix. If left blank the name will default to
 # the project name
 
-APP_NAME =
+APP_NAME = 
 
 # The flags passed to xcc when building the application
 # You can also set the following to override flags for a particular language:
@@ -24,7 +24,7 @@ XCC_FLAGS_icmp.xc = $(XCC_FLAGS) -Wno-reinterpret-alignment
 
 # The USED_MODULES variable lists other module used by the application.
 
-USED_MODULES = lib_ethernet lib_otpinfo lib_xtcp lib_webserver
+USED_MODULES = lib_ethernet lib_otpinfo lib_webserver lib_xtcp
 
 #=============================================================================
 # The following part of the Makefile includes the common build infrastructure
