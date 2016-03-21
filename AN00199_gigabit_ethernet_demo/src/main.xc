@@ -12,7 +12,8 @@
 #define BOARD_X200_MC     (1)
 #define BOARD_D4U_AVB_DG  (2)
 
-#define BOARD BOARD_D4U_AVB_DG
+//#define BOARD BOARD_D4U_AVB_DG
+#define BOARD BOARD_X200_MC
 
 xtcp_ipconfig_t ipconfig = {
         { 192, 168,   1, 178 },
@@ -21,7 +22,7 @@ xtcp_ipconfig_t ipconfig = {
 };
 
 
-#if (BOARD == X200_MC)
+#if (BOARD == BOARD_X200_MC)
 // These ports are for accessing the OTP memory
 otp_ports_t otp_ports = on tile[0]: OTP_PORTS_INITIALIZER;
 
@@ -61,7 +62,7 @@ enum eth_clients {
 
 enum cfg_clients {
   CFG_TO_XTCP,
-#if (BOARD == X200_MC)
+#if (BOARD == BOARD_X200_MC)
   CFG_TO_PHY_DRIVER,
 #endif
   NUM_CFG_CLIENTS
@@ -84,7 +85,7 @@ void reset_phy()
 }
 
 
-#if (BOARD == X200_MC)
+#if (BOARD == BOARD_X200_MC)
 [[combinable]]
 void ar8035_phy_driver(client interface smi_if smi,
                 client interface ethernet_cfg_if eth) {
@@ -206,12 +207,12 @@ int main()
   chan c_xtcp[NUM_XTCP_CLIENTS];
   
   smi_if i_smi;
-#if (BOARD == X200_MC)
+#if (BOARD == BOARD_X200_MC)
   streaming chan c_rgmii_cfg;
 #endif
 
   par {
-#if (BOARD == X200_MC)
+#if (BOARD == BOARD_X200_MC)
     on tile[1]: rgmii_ethernet_mac(i_rx, NUM_ETH_CLIENTS,
                                    i_tx, NUM_ETH_CLIENTS,
                                    null, null,
